@@ -1,0 +1,27 @@
+{
+  "name": "jserver",
+  "version": "1.2.2",
+  "description": "A toolkit that automatically generates APIs based on JSON or DATABASE.",
+  "main": "index.js",
+  "private": false,
+  "bin": {
+    "jserver": "./index.js"
+  },
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "JSON",
+    "DATABASE",
+    "SERVER",
+    "API"
+  ],
+  "author": "OneRestart",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "minimist": "^1.2.8",
+    "mysql": "^2.18.1"
+  }
+}
