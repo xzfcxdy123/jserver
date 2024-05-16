@@ -74,6 +74,7 @@ function dbMain() {
                             msg: err.sqlMessage,
                             data: null
                         });
+                        return;
                     }
                     res.send({
                         code: 200,
@@ -91,6 +92,7 @@ function dbMain() {
                             msg: err.sqlMessage,
                             data: null
                         });
+                        return;
                     }
                     res.send({
                         code: 200,
@@ -100,14 +102,15 @@ function dbMain() {
                 });
             });
 
-            app.post(`/${table}/insert`, (req, res) => {
-                connection.query(`INSERT INTO ${table} (${Object.keys(req.body).join(', ')}) VALUES (${Object.values(req.body).join(', ')})`, (err, result) => {
+            app.post(`/${table}/create`, (req, res) => {
+                connection.query(`INSERT INTO ${table} (${Object.keys(req.body).map(e => `\`${e}\``).join(', ')}) VALUES (${Object.values(req.body).map(e => `'${e}'`).join(', ')})`, (err, result) => {
                     if (err) {
                         res.send({
                             code: 403,
                             msg: err.sqlMessage,
                             data: null
                         });
+                        return;
                     }
                     res.send({
                         code: 200,
@@ -125,6 +128,7 @@ function dbMain() {
                             msg: err.sqlMessage,
                             data: null
                         });
+                        return;
                     }
                     res.send({
                         code: 200,
@@ -142,6 +146,7 @@ function dbMain() {
                             msg: err.sqlMessage,
                             data: null
                         });
+                        return;
                     }
                     res.send({
                         code: 200,
@@ -246,7 +251,7 @@ ${apis.join('\n')}
 if (args.help) {
     console.log(`
 Title: A toolkit that automatically generates APIs based on JSON or DATABASE.
-Version: 1.2.2.
+Version: 1.2.3.
 Params: [
     --help: Displays this help message.
     --version: Displays the version of the toolkit.
@@ -264,7 +269,7 @@ Params: [
 }
 
 if (args.version) {
-    console.log(`v1.2.2`);
+    console.log(`v1.2.3`);
     process.exit(1);
 }
 

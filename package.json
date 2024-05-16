@@ -1,6 +1,6 @@
 {
   "name": "jserver",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A toolkit that automatically generates APIs based on JSON or DATABASE.",
   "main": "index.js",
   "private": false,
